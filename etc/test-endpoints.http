@@ -1,0 +1,44 @@
+### API INDEX : --> Successful test: check response status is 200
+GET http://localhost:8080/
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+
+client.test("Response content-type is json", function() {
+  var type = response.contentType.mimeType;
+  client.assert(type === "application/hal+json", "Expected 'application/hal+json' but received '" + type + "'");
+});
+%}
+
+### CREATE COMAMND --> Successful test: check response status is 201
+GET http://localhost:8080/command/create
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+client.test("Response content-type is json", function() {
+  var type = response.contentType.mimeType;
+  client.assert(type === "text/plain", "Expected 'text/plain' but received '" + type + "'");
+});
+%}
+
+
+### QUERY COMMAND : --> Successful test: check response status is 200
+GET http://localhost:8080/query/wallets
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+client.test("Response content-type is json", function() {
+  var type = response.contentType.mimeType;
+  client.assert(type === "application/hal+json", "Expected 'application/hal+json' but received '" + type + "'");
+});
+%}
+
+
+
+

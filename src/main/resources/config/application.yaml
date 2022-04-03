@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  forward-headers-strategy: FRAMEWORK
+  shutdown: graceful
+  error:
+    include-exception: off
+    include-stacktrace: never
+    include-message: never
+
+spring:
+  profiles:
+    active: default
+  config:
+    import:
+      - classpath:config/common.yaml
+
+  security:
+    user:
+      roles: ACTUATOR
+
+  data:
+    mongodb:
+      database: demo-db
+      auto-index-creation: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+---
+spring:
+  config:
+    activate:
+      on-profile: integration
+---
+spring:
+  config:
+    activate:
+      on-profile: preproduction
+---
+spring:
+  config:
+    activate:
+      on-profile: production

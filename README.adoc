@@ -1,0 +1,150 @@
+// Settings
+:idprefix:
+:idseparator: -
+:toc: left
+:icons: font
+:source-highlighter: prettify
+:toclevels: 3
+:doctype: book
+:sectanchors:
+:copyright: ©
+:dot: .
+:ellipsis: …
+:hatch: #
+:pilcrow: ¶
+:star: *
+:tilde: ~
+:ul: _
+ifndef::imagesdir[:imagesdir: src/asciidoc/docs/images]
+ifndef::resourcesdir[:resourcesdir: src/asciidoc/resources]
+
+
+= Kboot Template Project
+
+== Minikube Deployment
+```bash
+skaffold run
+```
+
+== AKS Deployment
+
+=== PreCondition
+CAUTION: Traefik have to be installed for the Ingress Deployment
+
+```bash
+./c3s
+----------------------------------------------------------------------------------------
+:: c3smonkey CLI
+----------------------------------------------------------------------------------------
+ 1) Compile Only
+ 2) Run Unit Tests Only
+ 3) Generate Asciidoc
+ 4) Convert Contract Tests
+ 5) Generate Contract Tests
+ 6) Convert Contract, Generate and Run Contract Stubs
+ 7) Run Integration and Contracts Tests
+ 8) Run Integration and Contracts Test and generate Documentation
+ 9) Create Docker Image
+10) K3D - Create Cluster
+11) K3D - Install Ingress
+12) K3D - Install Sealed Secret Operator
+13) K3D - Download Sealed Secret CRT
+14) K3D - Generate Sealed Secret
+15) K3D - Install Sealed Secret
+16) K3D - Check Sealed Secret
+17) Login AKS Container Registry
+18) Deploy to AKS
+19) Quit
+Please enter your choice:
+```
+
+http://aks.c3smonkey.ch/demo[http://aks.c3smonkey.ch/demo]
+
+== Start Local
+
+```bash
+SPRING_PROFILES_ACTIVE=standalone mvn clean spring-boot:run
+```
+
+== Deploy to Dockerhub
+```bash
+./mvnw compile jib:build -Dimage=c3smonkey/kboot-tasks:latest -Pjib
+```
+
+= Clean- Onion- Hexagonal Architecture
+
+NOTE: See: https://dev.to/danielrusnok/onion-architecture-or-how-to-not-make-spaghetti-244b[https://dev.to/danielrusnok/onion-architecture-or-how-to-not-make-spaghetti-244b,role=external,window=_blank] Core of application is defined by tasks or Bussiness rules, which application should fulfil.
+
+image:OnionArchitecture.png[OnionArchitecture]
+
+== Application layer
+The core called Application contains every work done with entities or value objects. In the introduction, I talked about tasks or business rules. Example of business rule could be a task "Save customer." But wait, such a rule will have to work with the database. And at the introduction, we made it clear that the database should not be a part of the application's core. So where is the database?
+
+
+=== Domain
+=== Application
+
+== Presentation layer
+Client API can be found in the _Presentation_ _layer_
+
+== Persistence layer
+Database can be found in the _Persistence_ _layer_ (MongoDB, In-Memory DB etc.)
+
+== Infrastructure layer
+Communication with external technologies/Systems is placed in the _Infrastructure_ _layer_
+
+
+[source,bash]
+.Top Level Source Folder Structure
+----
+.
+├── asciidoc <1>
+│   ├── docs
+│   └── resources
+├── contracts-test <2>
+│   ├── kotlin
+│   └── resources
+├── integration-test <3>
+│   ├── kotlin
+│   └── resources
+├── main <4>
+│   ├── kotlin
+│   └── resources
+└── test <5>
+    ├── kotlin
+    └── resources
+----
+
+<1> Service documentation
+<2> Contract tests `presentation` API
+<3> Integration tests
+<4> Application implementation
+<5> Unit tests
+
+
+[source,bash]
+.Application Level Source Folder Structure
+----
+.
+├── application <1>
+├── domain <2>
+└── infrastructure <3>
+    ├── exception
+    ├── persistence <4>
+    │   └── mongo <5>
+    ├── webapi <6>
+    └── webclient <7>
+----
+
+<1> Application services responsible for providing access to the domain to external clients. An application service orchestrates use cases, but does not contain business logic.
+<2> Entity, ValueObject `DDD` Core Domain Model
+<3> Infrastructure services. An infrastructure service provides functionality to the domain that requires additional infrastructure only available outside of the domain. The infrastructure service interface forms part of the domain, the implementation is part of the infrastructure.
+<4> Persistence logic
+<5> `MongoDB` implementation of the persistence logic
+<6> `Presentation` implementation of the presentation API
+<7> `Downstream WebClient` implementation (Adapter) of the downstream service
+
+
+
+[source,bash]
+oc policy add-role-to-user view -n demo -z default

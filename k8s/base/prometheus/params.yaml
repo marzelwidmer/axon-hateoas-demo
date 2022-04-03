@@ -1,0 +1,8 @@
+varReference:
+  # Prometheus
+  - path: spec/groups/rules/alert
+    kind: PrometheusRule
+  - path: spec/groups/name
+    kind: PrometheusRule
+  - path: spec/groups/rules/expr
+    kind: PrometheusRule

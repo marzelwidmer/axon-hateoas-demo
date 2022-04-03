@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  template:
+    spec:
+      containers:
+        - name: kboot-tasks
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Djavax.net.ssl.trustStoreType=JKS
+                      -Xms700m -Xmx700m -XX:MaxMetaspaceSize=256M
+                      -Duser.timezone='Europe/Zurich'
+                      "
+#              value: "-Djavax.net.ssl.trustStore=/mnt/truststore/kboot-truststore.jks
+#              -Djavax.net.ssl.trustStoreType=JKS -Xms768m -Xmx768m -XX:MaxMetaspaceSize=256M
+#              -Duser.timezone='Europe/Zurich'
+#              "
+#          volumeMounts:
+#            - mountPath: /mnt/truststore
+#              name: demo-truststore
+#              readOnly: true
+#      volumes:
+#        - name: demo-truststore
+#          secret:
+#            defaultMode: 420Ω
+#            items:
+#              - key: truststore.jks
+#                path: demo-truststore.jks
+#            secretName: demo-truststore

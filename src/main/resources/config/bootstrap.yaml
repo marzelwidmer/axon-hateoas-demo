@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: kboot-tasks
+
+  cloud:
+    kubernetes:
+      reload:
+        enabled: false
+
+      discovery:
+        enabled: true
+---
+spring:
+  config:
+    activate:
+      on-profile: standalone
+
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
+      reload:
+        enabled: false
+      enabled: false
+
+logging:
+  level:
+    WireMock: warn

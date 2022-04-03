@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: app
+  labels:
+    prometheus: apps
+spec:
+  groups:
+    - name: $(name)-$(namespace)
+      rules:
+        - alert: $(name)-$(namespace)-job_down
+          expr: up{job="$(name)", namespace="$(namespace)"}== 0
+          annotations:
+            severity: critical
+            message: "{{ $labels.job }}: state down"

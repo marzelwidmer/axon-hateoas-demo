@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="KbootTasksApplicationService - standalone" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="Spring Boot">>
+    <module name="kboot-tasks" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ch.keepcalm.demo.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.keepcalm.demo.KbootTasksApplicationService" />
+    <option name="ACTIVE_PROFILES" value="standalone" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

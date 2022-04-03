@@ -1,0 +1,31 @@
+spring:
+  sleuth:
+    baggage:
+      remote-fields: trid
+      correlation-fields: trid
+
+logging:
+  level:
+    root: WARN
+    ch.keepcalm.security: DEBUG
+  pattern:
+    level: '%5p [${spring.application.name:-},%X{onlineId:-},%X{trid:-},%X{traceId:-},%X{spanId:-},%X{spanExportable:-}]'
+    console: "%clr(%d{yyyy-MM-dd E HH:mm:ss.SSS}){blue} - %clr(${spring.application.name:-}){green} - %clr(%-40.40logger{0}){magenta} - %clr(%m){green}%n"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+
+keepcalm:
+  security:
+    endpoints:
+      unsecured:
+        - "/**"

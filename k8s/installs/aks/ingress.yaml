@@ -1,0 +1,23 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: app
+spec:
+  routes:
+    - match: PathPrefix(`/demo`)
+      kind: Rule
+      middlewares:
+        - name: test-stripprefix
+      services:
+        - name: kboot-tasks
+          port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /demo

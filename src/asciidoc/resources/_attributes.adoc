@@ -1,0 +1,30 @@
+// Settings
+:idprefix:
+:idseparator: -
+:toc: left
+:icons: font
+:source-highlighter: prettify
+//:source-highlighter: rouge
+//:source-highlighter: coderay
+:toclevels: 3
+:doctype: book
+:sectanchors:
+:copyright: ©
+:dot: .
+:ellipsis: …
+:hatch: #
+:pilcrow: ¶
+:star: *
+:tilde: ~
+:ul: _
+
+
+:project_id: {project-name}
+:revnumber: {project-version}
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/kotlin]
+ifndef::testdir[:testdir: ../../test/kotlin]
+ifndef::gitlogdir[:gitlogdir: ../../../target/generated-gitlog]
+ifndef::resourcesdir[:resourcesdir: ../resources]
+
+

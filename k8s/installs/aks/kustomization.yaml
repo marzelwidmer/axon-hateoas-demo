@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+  - name: c3smonkey/template
+    newName: c3smonkey.azurecr.io/kboot-tasks
+    newTag: latest
+
+
+namespace: demo
+
+commonLabels:
+  app: kboot-tasks
+  appGroup: demo
+
+resources:
+  - ../../base
+  - ingress.yaml
+
+# Patch Deployment
+patchesStrategicMerge:
+  - patch-spring-profile.yaml
+
+# ConfigMap
+configMapGenerator:
+  - files:
+      - config-files/application.yaml
+    name: kboot-tasks
+    options:
+      disableNameSuffixHash: true

@@ -1,0 +1,7 @@
+include::_attributes.adoc[]
+
+= Use Case
+
+ifndef::resourcesdir[:resourcesdir: ../resources]
+plantuml::{resourcesdir}/diagram/_Sample.puml[png]
+

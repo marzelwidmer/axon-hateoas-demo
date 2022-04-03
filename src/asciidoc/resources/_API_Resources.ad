@@ -1,0 +1,26 @@
+include::_attributes.adoc[]
+
+[[overview_hypermedia]]
+= Hypermedia - API
+
+_{project-name}_ uses hypermedia and resources include links to other resources in their responses.
+Responses are in https://github.com/mikekelly/hal_specification[Hypertext
+Application Language (HAL)] format.
+Links can be found beneath the `_links` key.
+Users of the API should not create URIs themselves, instead they should use the above-described links to navigate from resource to resource.
+
+
+NOTE: Each Resource Object SHOULD contain a _self_ link that corresponds with the IANA registered 'self' relation (as defined by [RFC5988]) whose target is the resource's URI.
+
+[[resources_index]]
+== Root API
+The index provides the entry point into the service.
+
+[[resources_index_access]]
+=== Accessing the index
+A `GET` request is used to access the index resource of the _{project-name}_.
+This resource will provide the possible functionality for the current `principal`
+
+==== Sample Response
+operation::index/[snippets='httpie-request,curl-request,response-body,links']
+

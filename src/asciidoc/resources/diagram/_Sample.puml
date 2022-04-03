@@ -1,0 +1,52 @@
+@startuml
+
+skinparam monochrome true
+skinparam ranksep 20
+skinparam dpi 150
+skinparam arrowThickness 0.7
+skinparam packageTitleAlignment left
+skinparam usecaseBorderThickness 0.4
+skinparam defaultFontSize 12
+skinparam rectangleBorderThickness 1
+'
+'rectangle "Infrastructure" {
+'	(webapi.index)
+'	(Controllers)
+'}
+'rectangle "Application" {
+'	(model)
+'}
+'rectangle "<b>client</b>" as client
+'
+'
+'
+'rectangle "Main" {
+'  (main.view)
+'  (singleton)
+'}
+'rectangle "Base" {
+'  (base.component)
+'  (component)
+'  (model)
+'}
+'client ==> (Infrastructure)
+'(Infrastructure) ..> (Application)
+'(Application) ..> (Model)
+'(UI) ..> (Controllers)
+'(Controllers) ..> (Entities)
+
+'(main.view) --> (component)
+'(main.view) ...> (singleton)
+'(singleton) ---> (model)
+
+rectangle "Infrastructure" {
+	rectangle "Application Services" {
+    	rectangle "Domain Services" {
+        	(Domain Model)
+        }
+    }
+}
+
+@enduml
+
+

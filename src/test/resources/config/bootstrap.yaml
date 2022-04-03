@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: kboot-tasks
+
+  cloud:
+    kubernetes:
+      config:
+        enabled: false
+      reload:
+        enabled: false

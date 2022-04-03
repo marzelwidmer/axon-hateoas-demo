@@ -1,0 +1,12 @@
+spring:
+  config:
+    activate:
+      on-profile: standalone
+
+  mongodb:
+    embedded:
+      version: 3.2.3
+
+logging:
+  level:
+    root: INFO

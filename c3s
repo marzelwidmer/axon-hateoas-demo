@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+
+echo "----------------------------------------------------------------------------------------"
+echo ":: c3smonkey CLI"
+echo "----------------------------------------------------------------------------------------"
+
+
+PS3='Please enter your choice: '
+options=(
+  "Compile Only"
+  "Run Unit Tests Only"
+  "Generate Asciidoc"
+  "Convert Contract Tests"
+  "Generate Contract Tests"
+  "Convert Contract, Generate and Run Contract Stubs"
+  "Run Integration and Contracts Tests"
+  "Run Integration and Contracts Test and generate Documentation"
+  "Create Docker Image"
+  "K3D - Create Cluster"
+  "K3D - Install Ingress"
+  "K3D - Install Sealed Secret Operator"
+  "K3D - Download Sealed Secret CRT"
+  "K3D - Generate Sealed Secret"
+  "K3D - Install Sealed Secret"
+  "K3D - Check Sealed Secret"
+  "K3D - Install argo-cd"
+  "K3D - Get Admin Password argo-cd"
+  "Login AKS Container Registry"
+  "Deploy to AKS"
+  "Quit"
+)
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Compile Only")
+            echo ""
+            echo ": Compile Project :"
+            echo "-------------------"
+            "./scripts/compileOnly.sh"
+            break
+            ;;
+        "Run Unit Tests Only")
+            echo ""
+            echo ": Run Unit Test :"
+            echo "-----------------"
+            "./scripts/unitTestsOnly.sh"
+            break
+            ;;
+        "Generate Asciidoc")
+            echo ""
+            echo ": Generate Asciidoc :"
+            echo "---------------------"
+            "./scripts/generateDocumentation.sh"
+            break
+            ;;
+        "Convert Contract Tests")
+            echo ""
+            echo ": Convert Contract Tests :"
+            echo "--------------------------"
+            "./scripts/convertContractTest.sh"
+            break
+            ;;
+        "Generate Contract Tests")
+            echo ""
+            echo ": Generate Contract Tests :"
+            echo "---------------------------"
+            "./scripts/generateContractTest.sh"
+            break
+            ;;
+        "Convert Contract, Generate and Run Contract Stubs")
+            echo ""
+            echo ": Convert Contract, Generate and Run Contract Stubs :"
+            echo "-----------------------------------------------------"
+            "./scripts/runContractStubsTest.sh"
+            break
+            ;;
+        "Run Integration and Contracts Tests")
+            echo ""
+            echo ": Run Integration and Contracts Tests :"
+            echo "---------------------------------------"
+            "./scripts/runAll.sh"
+            break
+            ;;
+        "Run Integration and Contracts Test and generate Documentation")
+            echo ""
+            echo ": Run Integration and Contracts Test and generate Documentation :"
+            echo "-----------------------------------------------------------------"
+            "./scripts/runAllWithDocs.sh"
+            break
+            ;;
+        "Create Docker Image")
+            echo ""
+            echo ": Create Docker Image :"
+            echo "-----------------------"
+            "./scripts/buildDockerImage.sh"
+            break
+            ;;
+
+
+        "K3D - Create Cluster")
+            "./scripts/k3d_create-cluster.sh"
+            break
+            ;;
+        "K3D - Install Ingress")
+            "./scripts/k3d_ingress-install.sh"
+            break
+            ;;
+        "K3D - Install Sealed Secret Operator")
+          "./scripts/k3d_sealed-secret-install-operator.sh"
+          break
+          ;;
+        "K3D - Download Sealed Secret CRT")
+          "./scripts/k3d_sealed-secret-download-crt.sh"
+          break
+          ;;
+        "K3D - Generate Sealed Secret")
+          "./scripts/k3d_sealed-secret-generate-secret.sh"
+          break
+          ;;
+         "K3D - Install Sealed Secret")
+          "./scripts/k3d_sealed-secret-install-secret.sh"
+          break
+          ;;
+         "K3D - Check Sealed Secret")
+          "./scripts/k3d_sealed-secret-check-installed-secret.sh"
+          break
+          ;;
+
+
+         "K3D - Install argo-cd")
+          "./scripts/k3d_argo-cd-install.sh"
+          break
+          ;;
+         "K3D - Get Admin Password argo-cd")
+          "./scripts/k3d_argo-cd-get-admin-pwd.sh"
+          break
+          ;;
+
+
+
+        "Login AKS Container Registry")
+            "./scripts/loginAKSContainerRegistry.sh"
+            break
+            ;;
+        "Deploy to AKS")
+            "./scripts/deployToAKS.sh"
+            break
+            ;;
+
+        "Quit")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
