@@ -10,7 +10,11 @@ class TaskStateTests {
         TaskState.Open.name `should be` "Open"
     }
 
-
+    @Test
+    fun `Should create Status with valid value Done`() {
+        TaskState.Done.name `should be` "Done"
+    }
+    
 }
 
 
