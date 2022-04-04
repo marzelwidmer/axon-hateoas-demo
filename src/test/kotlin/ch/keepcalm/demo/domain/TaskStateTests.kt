@@ -15,6 +15,10 @@ class TaskStateTests {
         TaskState.Done.name `should be` "Done"
     }
 
+    @Test
+    fun `Should create Status with valid value Deadline reached`() {
+        TaskState.DeadlineReached.name `should be` "DeadlineReached"
+    }
 }
 
 
