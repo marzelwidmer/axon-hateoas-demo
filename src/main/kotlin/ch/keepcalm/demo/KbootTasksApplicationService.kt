@@ -34,10 +34,7 @@ fun main(args: Array<String>) {
                     ApplicationRunner {
                         runBlocking {
                             repeat(500) {
-                                val taskId = TaskId(UUID.randomUUID().toString())
-                                val now = LocalDateTime.now()
-                                commandGateway.send<Any>(CreateTaskCommand(taskId = taskId, date = now)).awaitSingleOrNull()
-                                println("ApplicationRunner Send Command : -----------------> $it")
+                                loadEvents(it, commandGateway)
                             }
                         }
                     }
@@ -45,5 +42,16 @@ fun main(args: Array<String>) {
                 bean<ForwardedHeaderTransformer>()
             }
         )
+    }
+}
+
+
+suspend fun loadEvents(counter : Int, commandGateway: ReactorCommandGateway) {
+    val taskId = TaskId(UUID.randomUUID().toString())
+    val now = LocalDateTime.now()
+    val command = CreateTaskCommand(taskId = taskId, date = now)
+    withContext(Dispatchers.IO) {
+        println("ApplicationRunner Send Command [$command] : -----------------> $counter ")
+        commandGateway.send<Any>(command).awaitSingleOrNull()
     }
 }
