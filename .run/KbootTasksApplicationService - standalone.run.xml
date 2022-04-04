@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="KbootTasksApplicationService - standalone" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="Spring Boot">>
-    <module name="kboot-tasks" />
+  <configuration default="false" name="KbootTasksApplicationService - standalone" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="Spring Boot">
+    <module name="axon-tasks" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.keepcalm.demo.*" />
