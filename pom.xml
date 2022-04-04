@@ -21,7 +21,7 @@
 		<graphvizdot>/usr/local/bin/dot</graphvizdot>
 
 		<java.version>11</java.version>
-		<kotlin.version>1.6.10</kotlin.version>
+		<kotlin.version>1.6.20</kotlin.version>
 
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
 		<spring-cloud-contract-plugin.version>3.0.1</spring-cloud-contract-plugin.version>
