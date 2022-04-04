@@ -14,7 +14,7 @@ class TaskStateTests {
     fun `Should create Status with valid value Done`() {
         TaskState.Done.name `should be` "Done"
     }
-    
+
 }
 
 

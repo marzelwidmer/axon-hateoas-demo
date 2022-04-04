@@ -4,5 +4,7 @@ package ch.keepcalm.demo.domain
  */
 enum class TaskState {
     /** When the Task has been created.  */
-    Open
+    Open,
+    /** Task completed successfully.  */
+    Done
 }
