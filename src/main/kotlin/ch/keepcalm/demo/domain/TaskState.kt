@@ -6,5 +6,7 @@ enum class TaskState {
     /** When the Task has been created.  */
     Open,
     /** Task completed successfully.  */
-    Done
+    Done,
+    /** When Task deadline is reached  */
+    DeadlineReached
 }
