@@ -1,5 +1,3 @@
 package ch.keepcalm.demo.domain
 
-class Task(val taskId: String) {
-
-}
+data class Task(val taskId: TaskId)
