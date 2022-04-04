@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "axon.aggregate.snapshotThreshold",
+      "type": "java.lang.Integer",
+      "description": "Configures a snapshot trigger to create a Snapshot every events. Default Settings are 250 events."
+    }
+  ]
+}

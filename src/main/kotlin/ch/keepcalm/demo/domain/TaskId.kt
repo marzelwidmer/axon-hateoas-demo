@@ -1,7 +1,7 @@
 package ch.keepcalm.demo.domain
 
-@JvmInline
-value class TaskId(private val value: String) {
+//@JvmInline
+data class TaskId(val value: String) {
     init {
         require(value.isNotEmpty()) { "TaskId must be non-empty" }
         require(value.trim().length <= 40) { "wrong TaskId length" }

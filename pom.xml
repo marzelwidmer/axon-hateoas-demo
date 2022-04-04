@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>ch.helsana.microservice</groupId>
-	<artifactId>kboot-tasks</artifactId>
+	<artifactId>axon-tasks</artifactId>
 	<version>${revision}</version>
 	<description>FSL kboot-tasks project with Kotlin and coroutine</description>
 	<name>kboot-tasks</name>

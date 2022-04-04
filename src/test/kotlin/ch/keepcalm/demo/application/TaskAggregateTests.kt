@@ -1,5 +1,7 @@
 package ch.keepcalm.demo.application
-import TaskCreatedEvent
+
+import ch.keepcalm.demo.application.event.TaskCreatedEvent
+import ch.keepcalm.demo.domain.TaskId
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -15,9 +17,9 @@ class TaskAggregateTests {
 
     @Test
     fun `Create task command will expect a TaskCreatedEvent`() {
-        val taskId = UUID.randomUUID().toString()
         val now = LocalDateTime.now()
-
+        val validValue = UUID.randomUUID().toString()
+        val taskId = TaskId(validValue)
         fixture
             .`when`(CreateTaskCommand(taskId = taskId, date = now))
             .expectEvents(TaskCreatedEvent(taskId = taskId, date = now))
