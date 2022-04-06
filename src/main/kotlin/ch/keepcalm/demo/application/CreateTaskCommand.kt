@@ -1,4 +1,4 @@
-package ch.keepcalm.demo.application.command
+package ch.keepcalm.demo.application
 
 import ch.keepcalm.demo.domain.TaskId
 import java.time.LocalDateTime

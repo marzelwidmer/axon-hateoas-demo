@@ -1,4 +1,4 @@
-package ch.keepcalm.demo.application.event
+package ch.keepcalm.demo.domain
 
 import ch.keepcalm.demo.domain.TaskId
 import java.time.LocalDateTime

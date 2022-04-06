@@ -1,7 +1,6 @@
 package ch.keepcalm.demo.application
 
-import ch.keepcalm.demo.application.command.CreateTaskCommand
-import ch.keepcalm.demo.application.event.TaskCreatedEvent
+import ch.keepcalm.demo.domain.TaskCreatedEvent
 import ch.keepcalm.demo.domain.TaskId
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler

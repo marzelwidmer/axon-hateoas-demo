@@ -1,6 +1,6 @@
 package ch.keepcalm.demo
 
-import ch.keepcalm.demo.application.command.CreateTaskCommand
+import ch.keepcalm.demo.application.CreateTaskCommand
 import ch.keepcalm.demo.domain.TaskId
 import ch.keepcalm.demo.infrastructure.configuration.AxonSnapshotThresholdConfigurer
 import kotlinx.coroutines.Dispatchers
