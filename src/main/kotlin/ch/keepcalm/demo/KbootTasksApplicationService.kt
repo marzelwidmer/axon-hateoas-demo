@@ -60,8 +60,6 @@ suspend fun loadEvents(counter: Int, commandGateway: ReactorCommandGateway) {
     withContext(Dispatchers.IO) {
         println("ApplicationRunner Send Command [$createTaskCommand] : -----------------> $counter ")
         commandGateway.send<Any>(createTaskCommand).awaitSingleOrNull()
-
-
         delay(1_000)
         println("ApplicationRunner Send Command [$doneTaskCommand] : -----------------> $counter ")
         commandGateway.send<Any>(doneTaskCommand).awaitSingleOrNull()
