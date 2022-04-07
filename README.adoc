@@ -148,3 +148,5 @@ Communication with external technologies/Systems is placed in the _Infrastructur
 
 [source,bash]
 oc policy add-role-to-user view -n demo -z default
+
+

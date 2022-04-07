@@ -1,9 +1,11 @@
 package ch.keepcalm.demo
 
 import ch.keepcalm.demo.application.CreateTaskCommand
+import ch.keepcalm.demo.application.DoneTaskCommand
 import ch.keepcalm.demo.domain.TaskId
 import ch.keepcalm.demo.infrastructure.configuration.AxonSnapshotThresholdConfigurer
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -29,16 +31,20 @@ fun main(args: Array<String>) {
     runApplication<KbootTasksApplicationService>(*args) {
         addInitializers(
             beans {
-                bean {
-                    val commandGateway = ref<ReactorCommandGateway>()
-                    ApplicationRunner {
-                        runBlocking {
-                            repeat(500) {
-                                loadEvents(it, commandGateway)
+
+                profile("standalone") {
+                    bean {
+                        val commandGateway = ref<ReactorCommandGateway>()
+                        ApplicationRunner {
+                            runBlocking {
+                                repeat(2) {
+                                    loadEvents(it, commandGateway)
+                                }
                             }
                         }
                     }
                 }
+
                 bean<ForwardedHeaderTransformer>()
             }
         )
@@ -46,12 +52,20 @@ fun main(args: Array<String>) {
 }
 
 
-suspend fun loadEvents(counter : Int, commandGateway: ReactorCommandGateway) {
+suspend fun loadEvents(counter: Int, commandGateway: ReactorCommandGateway) {
     val taskId = TaskId(UUID.randomUUID().toString())
     val now = LocalDateTime.now()
-    val command = CreateTaskCommand(taskId = taskId, date = now)
+    val createTaskCommand = CreateTaskCommand(taskId = taskId, date = now)
+    val doneTaskCommand = DoneTaskCommand(taskId = taskId, date = now)
     withContext(Dispatchers.IO) {
-        println("ApplicationRunner Send Command [$command] : -----------------> $counter ")
-        commandGateway.send<Any>(command).awaitSingleOrNull()
+        println("ApplicationRunner Send Command [$createTaskCommand] : -----------------> $counter ")
+        commandGateway.send<Any>(createTaskCommand).awaitSingleOrNull()
+
+
+        delay(1_000)
+        println("ApplicationRunner Send Command [$doneTaskCommand] : -----------------> $counter ")
+        commandGateway.send<Any>(doneTaskCommand).awaitSingleOrNull()
     }
+    commandGateway.send<Any>(CreateTaskCommand(taskId = TaskId(UUID.randomUUID().toString()), date = now)).awaitSingleOrNull()
+
 }

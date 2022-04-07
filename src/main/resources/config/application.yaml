@@ -23,12 +23,24 @@ spring:
       database: demo-db
       auto-index-creation: true
 
+---
+spring:
+  config:
+    activate:
+      on-profile: query
 
+server:
+  port : 0
+
+logging:
+  level:
+    root: INFO
 ---
 spring:
   config:
     activate:
       on-profile: development
+
 ---
 spring:
   config:

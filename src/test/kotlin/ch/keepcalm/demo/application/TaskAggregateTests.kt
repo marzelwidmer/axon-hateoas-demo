@@ -2,6 +2,7 @@ package ch.keepcalm.demo.application
 
 import ch.keepcalm.demo.domain.TaskCreatedEvent
 import ch.keepcalm.demo.domain.TaskId
+import ch.keepcalm.demo.domain.TaskState
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -22,7 +23,7 @@ class TaskAggregateTests {
         val taskId = TaskId(validValue)
         fixture
             .`when`(CreateTaskCommand(taskId = taskId, date = now))
-            .expectEvents(TaskCreatedEvent(taskId = taskId, date = now))
+            .expectEvents(TaskCreatedEvent(taskId = taskId, date = now, state = TaskState.Open))
     }
 
 }
