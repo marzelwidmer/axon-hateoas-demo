@@ -24,6 +24,17 @@ management:
     info:
       enabled: true
 
+
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+
 keepcalm:
   security:
     endpoints:

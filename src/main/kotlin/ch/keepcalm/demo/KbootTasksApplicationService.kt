@@ -2,6 +2,7 @@ package ch.keepcalm.demo
 
 import ch.keepcalm.demo.application.CreateTaskCommand
 import ch.keepcalm.demo.application.DoneTaskCommand
+import ch.keepcalm.demo.domain.Task
 import ch.keepcalm.demo.domain.TaskId
 import ch.keepcalm.demo.infrastructure.configuration.AxonSnapshotThresholdConfigurer
 import kotlinx.coroutines.*
@@ -31,7 +32,6 @@ fun main(args: Array<String>) {
     runApplication<KbootTasksApplicationService>(*args) {
         addInitializers(
             beans {
-
                 profile("standalone") {
                     bean {
                         val commandGateway = ref<ReactorCommandGateway>()

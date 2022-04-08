@@ -20,21 +20,20 @@ spring:
 
   data:
     mongodb:
-      database: demo-db
+      database: axon-tasks-db
       auto-index-creation: true
 
----
-spring:
-  config:
-    activate:
-      on-profile: query
 
-server:
-  port : 0
 
-logging:
-  level:
-    root: INFO
+
+axon:
+  aggregate:
+    snapshotThreshold: 500
+
+  ### enable dimensional metrics
+  metrics:
+    micrometer:
+      dimensional: true
 ---
 spring:
   config:

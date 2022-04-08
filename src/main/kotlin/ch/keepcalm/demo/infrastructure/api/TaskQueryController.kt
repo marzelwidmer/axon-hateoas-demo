@@ -5,7 +5,6 @@ import ch.keepcalm.demo.infrastructure.persistence.mongodb.TaskView
 import kotlinx.coroutines.reactive.awaitSingle
 import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway
-import org.springframework.context.annotation.Profile
 import org.springframework.hateoas.CollectionModel
 import org.springframework.hateoas.EntityModel
 import org.springframework.hateoas.IanaLinkRelations
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@Profile("query")
 @RestController
 @RequestMapping("/query")
 class TaskQueryController(private val queryGateway: QueryGateway) {
