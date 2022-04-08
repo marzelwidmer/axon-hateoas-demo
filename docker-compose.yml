@@ -1,14 +1,27 @@
-version: '3.7'
-
+version: '3.1'
 services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./etc/grafana/dashboards:/var/lib/grafana/dashboards
 
   mongo:
     image: mongo:latest
     ports:
-      - 27017:27017
+      - "27017:27017"
 
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - "8081:8081"
+#
