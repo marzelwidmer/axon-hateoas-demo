@@ -7,6 +7,7 @@ import ch.keepcalm.demo.infrastructure.persistence.mongodb.TaskViewRepository
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
 class TaskEventHandler(private val taskViewRepository: TaskViewRepository) {
@@ -25,7 +26,14 @@ class TaskEventHandler(private val taskViewRepository: TaskViewRepository) {
     }
 
     @QueryHandler
-    fun answer(query: FindAllTasksQuery?): List<TaskView> {
+    fun findAllTasks(findAllTasks: FindAllTasks): List<TaskView> {
         return taskViewRepository.findAll()
+    }
+
+
+
+    @QueryHandler
+    fun findById(findTaskById: FindTaskById): Optional<TaskView> {
+        return taskViewRepository.findById(findTaskById.taskId)
     }
 }

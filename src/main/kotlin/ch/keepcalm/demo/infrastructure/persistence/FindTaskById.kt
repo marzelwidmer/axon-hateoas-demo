@@ -1,3 +1,3 @@
 package ch.keepcalm.demo.infrastructure.persistence
 
-class FindAllTasksQuery
+class FindTaskById(val taskId: String)

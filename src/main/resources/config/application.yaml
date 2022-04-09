@@ -14,6 +14,15 @@ spring:
     import:
       - classpath:config/common.yaml
 
+
+  jackson:
+    time-zone: CET
+    default-property-inclusion: non_null
+    serialization:
+      write_dates_as_timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+      
   security:
     user:
       roles: ACTUATOR

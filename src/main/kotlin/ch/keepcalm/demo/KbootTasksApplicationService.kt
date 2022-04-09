@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
                         ApplicationRunner {
                             runBlocking {
                                val (value, time) =  measureTimedValue {
-                                    loadEvents(commandGateway)
+//                                    loadEvents(commandGateway)
                                 }
                                 println("it took $time ---------------------> to load $value events.")
                             }
