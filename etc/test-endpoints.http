@@ -12,8 +12,16 @@ client.test("Response content-type is json", function() {
 });
 %}
 
+
+
+
+
 ### CREATE COMAMND --> Successful test: check response status is 201
-GET http://localhost:8080/command/create
+POST http://localhost:8080/command/tasks
+Content-Type: application/json
+
+{}
+
 
 > {%
 client.test("Request executed successfully", function() {
@@ -21,13 +29,14 @@ client.test("Request executed successfully", function() {
 });
 client.test("Response content-type is json", function() {
   var type = response.contentType.mimeType;
-  client.assert(type === "text/plain", "Expected 'text/plain' but received '" + type + "'");
+  client.assert(type === "application/hal+json", "Expected 'application/hal+json' but received '" + type + "'");
 });
 %}
 
 
+
 ### QUERY COMMAND : --> Successful test: check response status is 200
-GET http://localhost:8080/query/wallets
+GET http://localhost:8080/query/tasks
 
 > {%
 client.test("Request executed successfully", function() {
