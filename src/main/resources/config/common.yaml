@@ -17,15 +17,12 @@ management:
   endpoints:
     web:
       exposure:
-#        include: "prometheus,health,info,metrics"
-          include: "*"
+          include: "prometheus,health,info,metrics"
   endpoint:
     health:
       enabled: true
     info:
       enabled: true
-
-
     metrics:
       enabled: true
     prometheus:
@@ -34,7 +31,9 @@ management:
     export:
       prometheus:
         enabled: true
-
+    tags:
+      application: ${spring.application.name}
+      app: ${spring.application.name}
 
 keepcalm:
   security:

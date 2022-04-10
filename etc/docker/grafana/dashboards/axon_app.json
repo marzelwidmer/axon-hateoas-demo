@@ -1,40 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "https://docs.axoniq.io/reference-guide/axon-framework/monitoring-and-metrics#metrics",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.0.1"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -52,8 +16,8 @@
   "editable": true,
   "gnetId": 12963,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1591186139280,
+  "id": 3,
+  "iteration": 1619100270578,
   "links": [],
   "panels": [
     {
@@ -79,15 +43,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of success commands",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -111,12 +73,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:116",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:117",
           "name": "range to text",
           "value": 2
         }
@@ -161,7 +121,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:119",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -178,15 +137,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of failed commands",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -210,12 +167,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:157",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:158",
           "name": "range to text",
           "value": 2
         }
@@ -260,7 +215,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:160",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -277,15 +231,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of processed\n commands",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -309,12 +261,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:198",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:199",
           "name": "range to text",
           "value": 2
         }
@@ -359,7 +309,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:201",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -376,15 +325,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ingested\n commands",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -408,12 +355,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:239",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:240",
           "name": "range to text",
           "value": 2
         }
@@ -458,7 +403,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:242",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -475,15 +419,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ignored\n commands",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -507,12 +449,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:280",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:281",
           "name": "range to text",
           "value": 2
         }
@@ -557,7 +497,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:283",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -570,10 +509,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -601,9 +540,10 @@
       "links": [],
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -678,7 +618,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:561",
           "format": "locale",
           "label": null,
           "logBase": 1,
@@ -687,7 +626,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:562",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -706,10 +644,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -736,9 +674,10 @@
       "linewidth": 1,
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -775,7 +714,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -784,7 +722,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:513",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -803,10 +740,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -833,9 +770,10 @@
       "linewidth": 1,
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -886,7 +824,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -895,7 +832,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:513",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -932,15 +868,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of success events",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -964,12 +898,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:669",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:670",
           "name": "range to text",
           "value": 2
         }
@@ -1014,7 +946,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:672",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1031,15 +962,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of failed events",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1063,12 +992,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:710",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:711",
           "name": "range to text",
           "value": 2
         }
@@ -1113,7 +1040,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:713",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1130,15 +1056,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of processed\n events",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1162,12 +1086,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:751",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:752",
           "name": "range to text",
           "value": 2
         }
@@ -1212,7 +1134,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:754",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1229,15 +1150,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ingested\n events",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1261,12 +1180,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:792",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:793",
           "name": "range to text",
           "value": 2
         }
@@ -1311,7 +1228,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:795",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1328,15 +1244,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ignored\n events",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1360,12 +1274,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:833",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:834",
           "name": "range to text",
           "value": 2
         }
@@ -1410,7 +1322,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:836",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1423,10 +1334,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -1454,9 +1365,10 @@
       "links": [],
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1531,7 +1443,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:610",
           "format": "locale",
           "label": null,
           "logBase": 1,
@@ -1540,7 +1451,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:611",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1559,10 +1469,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -1589,9 +1499,10 @@
       "linewidth": 1,
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1642,7 +1553,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1651,7 +1561,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:513",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1688,15 +1597,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of success queries",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1720,12 +1627,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1121",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1122",
           "name": "range to text",
           "value": 2
         }
@@ -1770,7 +1675,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1124",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1787,15 +1691,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of failed queries",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1819,12 +1721,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1162",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1163",
           "name": "range to text",
           "value": 2
         }
@@ -1869,7 +1769,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1165",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1886,15 +1785,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of processed\n queries",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -1918,12 +1815,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1203",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1204",
           "name": "range to text",
           "value": 2
         }
@@ -1968,7 +1863,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1206",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -1985,15 +1879,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ingested\n queries",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -2017,12 +1909,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1244",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1245",
           "name": "range to text",
           "value": 2
         }
@@ -2067,7 +1957,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1247",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -2084,15 +1973,13 @@
         "#5195ce",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "decimals": 0,
       "description": "Total number of ignored\n queries",
       "editable": true,
       "error": false,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "short",
@@ -2116,12 +2003,10 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1285",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1286",
           "name": "range to text",
           "value": 2
         }
@@ -2166,7 +2051,6 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1288",
           "op": "=",
           "text": "0",
           "value": "null"
@@ -2179,10 +2063,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -2210,9 +2094,10 @@
       "links": [],
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2287,7 +2172,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:659",
           "format": "locale",
           "label": null,
           "logBase": 1,
@@ -2296,7 +2180,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:660",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2315,10 +2198,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -2345,9 +2228,10 @@
       "linewidth": 1,
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2384,7 +2268,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2393,7 +2276,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:513",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2412,10 +2294,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus-axon",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "links": []
         },
         "overrides": []
       },
@@ -2442,9 +2324,10 @@
       "linewidth": 1,
       "nullPointMode": "null as zero",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2495,7 +2378,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:512",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2504,7 +2386,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:513",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2520,23 +2401,33 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 25,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": "prometheus-axon",
         "definition": "label_values(app)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Application",
         "multi": false,
         "name": "application",
         "options": [],
-        "query": "label_values(app)",
+        "query": {
+          "query": "label_values(app)",
+          "refId": "prometheus-axon-application-Variable-Query"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2549,16 +2440,30 @@
       },
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "axonserver-enterprise-1:8024"
+          ],
+          "value": [
+            "axonserver-enterprise-1:8024"
+          ]
+        },
+        "datasource": "prometheus-axon",
         "definition": "label_values(jvm_classes_loaded_classes{app=\"$application\"}, instance)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Instance",
         "multi": true,
         "name": "instance",
         "options": [],
-        "query": "label_values(jvm_classes_loaded_classes{app=\"$application\"}, instance)",
+        "query": {
+          "query": "label_values(jvm_classes_loaded_classes{app=\"$application\"}, instance)",
+          "refId": "prometheus-axon-instance-Variable-Query"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2601,6 +2506,6 @@
   },
   "timezone": "",
   "title": "Axon Framework Application",
-  "uid": "axon_general_1",
+  "uid": "axon_general_",
   "version": 1
 }

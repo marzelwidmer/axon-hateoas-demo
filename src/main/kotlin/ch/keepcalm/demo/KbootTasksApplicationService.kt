@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
                         ApplicationRunner {
                             runBlocking {
                                val (value, time) =  measureTimedValue {
-//                                    loadEvents(commandGateway)
+                                    loadEvents(commandGateway)
                                 }
                                 println("it took $time ---------------------> to load $value events.")
                             }
@@ -53,7 +53,7 @@ fun main(args: Array<String>) {
 
 
 suspend fun loadEvents(commandGateway: ReactorCommandGateway): Int {
-    val count = 100
+    val count = 50
     repeat(count) { counter ->
         val taskId = TaskId(UUID.randomUUID().toString())
         val now = LocalDateTime.now()

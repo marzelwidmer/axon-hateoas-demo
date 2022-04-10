@@ -1,18 +1,23 @@
 version: '3.1'
 services:
   prometheus:
-    image: prom/prometheus
+    build:
+      context: .
+      dockerfile: ./etc/docker/prometheus/dockerfile
+    container_name: "prometheus"
+    hostname: "prometheus"
     ports:
       - "9090:9090"
-    volumes:
-      - ./etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
+    build:
+      context: .
+      dockerfile: ./etc/docker/grafana/dockerfile
     image: grafana/grafana
+    container_name: "grafana"
+    hostname: "grafana"
     ports:
       - "3000:3000"
-    volumes:
-      - ./etc/grafana/dashboards:/var/lib/grafana/dashboards
 
   mongo:
     image: mongo:latest
