@@ -29,4 +29,19 @@ services:
     restart: always
     ports:
       - "8081:8081"
+
+  sonarqube:
+    image: "sonarqube:latest"
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+
+#   Wait for the server to start and log in to SonarQube server on http://localhost:9000 using default credentials: login: admin password: admin
+#   Change default password or go to: http://localhost:9000/account/security/ and generate a token.
 #
+#     mvn clean package sonar:sonar \
+#       -Dsonar.projectKey=axon-tasks \
+#       -Dsonar.host.url=http://localhost:9000 \
+#        -Dsonar.login=admin \
+#        -Dsonar.password=admin \
+#        -Pcontracts,integration,documentation
