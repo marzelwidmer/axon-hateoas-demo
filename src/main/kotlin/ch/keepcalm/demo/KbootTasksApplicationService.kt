@@ -53,7 +53,7 @@ fun main(args: Array<String>) {
 
 
 suspend fun loadEvents(commandGateway: ReactorCommandGateway): Int {
-    val count = 50
+    val count = 1
     repeat(count) { counter ->
         val taskId = TaskId(UUID.randomUUID().toString())
         val now = LocalDateTime.now()

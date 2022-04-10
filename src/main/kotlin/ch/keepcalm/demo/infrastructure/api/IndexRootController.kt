@@ -1,5 +1,8 @@
 package ch.keepcalm.demo.infrastructure.api
 
+import ch.keepcalm.demo.infrastructure.api.task.CreatTaskController
+import ch.keepcalm.demo.infrastructure.api.task.CreateTaskResource
+import ch.keepcalm.demo.infrastructure.api.task.TaskQueryController
 import kotlinx.coroutines.reactive.awaitSingle
 import org.jmolecules.architecture.onion.classical.InfrastructureRing
 import org.springframework.hateoas.EntityModel
@@ -15,11 +18,15 @@ class IndexRootController {
 
     companion object REL {
         const val API_DOCS_REL = "documentation"
+        const val API_GET_ALL_TASKS_REL = "get-all-tasks"
+        const val API_CREATE_NEW_TASK_REL = "create-new-task"
     }
 
     @GetMapping("/", produces = [MediaTypes.HAL_JSON_VALUE])
     suspend fun index(): EntityModel<Unit> {
         return EntityModel.of(Unit, linkTo(methodOn(IndexRootController::class.java).index()).withSelfRel().toMono().awaitSingle())
             .add(linkTo(methodOn(IndexRootController::class.java).index()).slash("/api-docs/manual.html").withRel(API_DOCS_REL).toMono().awaitSingle())
+            .add(linkTo(methodOn(TaskQueryController::class.java).getAllTasks()).withRel(API_GET_ALL_TASKS_REL).toMono().awaitSingle())
+            .add(linkTo(methodOn(CreatTaskController::class.java).createTask(CreateTaskResource())).withRel(API_CREATE_NEW_TASK_REL).toMono().awaitSingle())
     }
 }

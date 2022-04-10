@@ -1,10 +1,13 @@
 package ch.keepcalm.demo.infrastructure.api
 
 import ch.keepcalm.security.test.WithMockCustomUser
+import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway
+import org.axonframework.queryhandling.QueryGateway
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Import
 import org.springframework.hateoas.MediaTypes.HAL_JSON
@@ -24,11 +27,16 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @ExtendWith(RestDocumentationExtension::class, SpringExtension::class)
 @Import(value = [IndexRootController::class])
 @WithMockCustomUser(username = "jane@doe.ch", authorities = ["keepcalm.admin", "keepcalm.user"], firstname = "jane", lastname = "doe")
-class RootControllerTest(private var webTestClient: WebTestClient) {
+class IndexRootControllerTest(private var webTestClient: WebTestClient) {
+
+    @MockBean
+    lateinit var reactorCommandGateway: ReactorCommandGateway
+    @MockBean
+    lateinit var queryGateway: QueryGateway
 
     @BeforeEach
-    fun setUp(applicationContext: ApplicationContext?, restDocumentation: RestDocumentationContextProvider?) {
-        webTestClient = WebTestClient.bindToApplicationContext(applicationContext!!)
+    fun setUp(applicationContext: ApplicationContext, restDocumentation: RestDocumentationContextProvider?) {
+        webTestClient = WebTestClient.bindToApplicationContext(applicationContext)
             .configureClient()
             .filter(
                 documentationConfiguration(restDocumentation)
@@ -53,7 +61,8 @@ class RootControllerTest(private var webTestClient: WebTestClient) {
                     links(
                         linkWithRel("self").description("Canonical link for this resource"),
                         linkWithRel("documentation").description("The <<resources_documentation,API Documentation>> resource"),
-                        linkWithRel("foobar").description("The <<resources_documentation,API FooBar Resource>> resource"),
+                        linkWithRel("get-all-tasks").description("The <<resources_get-all-tasks,API Get All Tasks Resource>> resource"),
+                        linkWithRel("create-new-task").description("The <<resources_create-new-task,API Create New Task Resource>> resource"),
                     ), responseFields(
                         subsectionWithPath("_links").description("Links to other resources")
                     )

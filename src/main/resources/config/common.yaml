@@ -4,6 +4,10 @@ spring:
       remote-fields: trid
       correlation-fields: trid
 
+
+  messages:
+    fallback-to-system-locale: false
+
 logging:
   level:
     root: WARN

@@ -26,6 +26,16 @@ Contract.make {
 										"href": value(
 												stub("http://${fromRequest().header('Host')}${fromRequest().header('Port')}/api-docs/manual.html"),
 												test("http://localhost:8080/api-docs/manual.html"))
+								],
+								"get-all-tasks": [
+										"href": value(
+												stub("http://${fromRequest().header('Host')}${fromRequest().header('Port')}/query/tasks"),
+												test("http://localhost:8080/query/tasks"))
+								],
+								"create-new-task": [
+										"href": value(
+												stub("http://${fromRequest().header('Host')}${fromRequest().header('Port')}/command/tasks"),
+												test("http://localhost:8080/command/tasks"))
 								]
 						]
 				]

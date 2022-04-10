@@ -24,3 +24,14 @@ This resource will provide the possible functionality for the current `principal
 ==== Sample Response
 operation::index/[snippets='httpie-request,curl-request,response-body,links']
 
+
+
+
+[[resources_create-new-task]]
+== New Task
+To create a new `task` send a `POST` request with a `empty` payload.
+
+
+[[resources_get-all-tasks]]
+== Get All Tasks
+To get all `task` send a `GET` request.

@@ -1,6 +1,6 @@
 package ch.keepcalm.demo.base
 
-import ch.keepcalm.demo.DemoApplicationService
+import ch.keepcalm.demo.KbootTasksApplicationService
 import ch.keepcalm.security.test.WithMockCustomUser
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
@@ -18,7 +18,7 @@ import org.springframework.test.web.reactive.server.WebTestClient
 
 @ExtendWith(RestDocumentationExtension::class, SpringExtension::class)
 @SpringBootTest(
-    classes = [DemoApplicationService::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
+    classes = [KbootTasksApplicationService::class], webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
     properties = ["spring.main.web-application-type=reactive", "server.port=8080"]
 )
 @AutoConfigureRestDocs(outputDir = "target/generated-snippets")
