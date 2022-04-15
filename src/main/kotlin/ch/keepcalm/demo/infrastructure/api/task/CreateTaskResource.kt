@@ -1,5 +1,9 @@
 package ch.keepcalm.demo.infrastructure.api.task
 
-import java.time.LocalDateTime
+import com.fasterxml.jackson.annotation.JsonFormat
+import java.time.LocalDate
 
-class CreateTaskResource()
+data class CreateTaskResource(
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    val createdDate: LocalDate
+)

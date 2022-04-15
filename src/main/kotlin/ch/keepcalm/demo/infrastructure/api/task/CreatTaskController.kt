@@ -12,6 +12,7 @@ import org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo
 import org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 import java.util.*
@@ -21,8 +22,11 @@ import java.util.*
 class CreatTaskController(private val commandGateway: ReactorCommandGateway) {
 
 
-    @PostMapping("/tasks", produces = [MediaTypes.HAL_JSON_VALUE])
     @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = ["/tasks"],
+        produces = [MediaTypes.HAL_JSON_VALUE],
+        consumes = [MediaType.APPLICATION_JSON_VALUE]
+    )
     suspend fun createTask(@RequestBody task: CreateTaskResource): EntityModel<Unit> {
 
         val taskId = TaskId(UUID.randomUUID().toString())
@@ -33,7 +37,11 @@ class CreatTaskController(private val commandGateway: ReactorCommandGateway) {
         commandGateway.send<Any>(createTaskCommand).awaitSingleOrNull()
 
         return  EntityModel.of(Unit)
-            .add(linkTo(methodOn(CreatTaskController::class.java).createTask(CreateTaskResource())).withSelfRel().toMono().awaitSingle())
+            .add(linkTo(methodOn(CreatTaskController::class.java).createTask(
+                CreateTaskResource(
+                    createdDate = now.toLocalDate()
+                )
+            )).withSelfRel().toMono().awaitSingle())
             .add(linkTo(methodOn(TaskQueryController::class.java).getAllTasks()).withRel(IanaLinkRelations.COLLECTION).toMono().awaitSingle())
             .add(linkTo(methodOn(TaskQueryController::class.java).getTaskById(taskId.value)).withRel(IanaLinkRelations.CURRENT).toMono().awaitSingle())
     }
