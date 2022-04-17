@@ -9,19 +9,20 @@ import org.axonframework.queryhandling.QueryHandler
 import org.springframework.stereotype.Component
 import java.util.*
 
+
 @Component
 class TaskEventHandler(private val taskViewRepository: TaskViewRepository) {
 
     @EventHandler
     fun on(event: TaskCreatedEvent) {
-        taskViewRepository.save(TaskView(event.taskId.value, state = event.state, date = event.date))
+        taskViewRepository.save(TaskView(event.taskId.value, taskState = event.state, date = event.date))
     }
 
 
     @EventHandler
     fun handle(event: TaskDoneEvent) {
         taskViewRepository.save(
-            TaskView(taskId = event.taskId.value, state = event.state, date = event.date)
+            TaskView(taskId = event.taskId.value, taskState = event.state, date = event.date)
         )
     }
 
@@ -31,9 +32,14 @@ class TaskEventHandler(private val taskViewRepository: TaskViewRepository) {
     }
 
 
-
     @QueryHandler
     fun findById(findTaskById: FindTaskById): Optional<TaskView> {
         return taskViewRepository.findById(findTaskById.taskId)
+    }
+
+
+    @QueryHandler
+    fun findAllTaskWithState(findAllTaskWithState: FindAllTaskWithState): List<TaskView> {
+        return taskViewRepository.findTaskViewByTaskState(findAllTaskWithState.taskState)
     }
 }

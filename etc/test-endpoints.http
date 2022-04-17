@@ -15,12 +15,13 @@ client.test("Response content-type is json", function() {
 
 
 
-
 ### CREATE COMAMND --> Successful test: check response status is 201
 POST http://localhost:8080/command/tasks
 Content-Type: application/json
 
-{}
+{
+  "createdDate": "2016-04-27"
+}
 
 
 > {%
@@ -37,6 +38,22 @@ client.test("Response content-type is json", function() {
 
 ### QUERY COMMAND : --> Successful test: check response status is 200
 GET http://localhost:8080/query/tasks
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+client.test("Response content-type is json", function() {
+  var type = response.contentType.mimeType;
+  client.assert(type === "application/hal+json", "Expected 'application/hal+json' but received '" + type + "'");
+});
+%}
+
+
+
+
+### QUERY COMMAND Search Open tasks : --> Successful test: check response status is 200
+GET http://localhost:8080/query/tasks/search?taskState=Open
 
 > {%
 client.test("Request executed successfully", function() {

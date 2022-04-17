@@ -1,6 +1,8 @@
 package ch.keepcalm.demo.infrastructure.api.task
 
+import ch.keepcalm.demo.domain.TaskState
 import ch.keepcalm.demo.infrastructure.api.IndexRootController
+import ch.keepcalm.demo.infrastructure.persistence.FindAllTaskWithState
 import ch.keepcalm.demo.infrastructure.persistence.FindAllTasks
 import ch.keepcalm.demo.infrastructure.persistence.FindTaskById
 import ch.keepcalm.demo.infrastructure.persistence.mongodb.TaskView
@@ -16,6 +18,7 @@ import org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -32,9 +35,19 @@ class TaskQueryController(private val queryGateway: QueryGateway) {
 
     @GetMapping("/tasks/{id}", produces = [MediaTypes.HAL_JSON_VALUE])
     suspend fun getTaskById(@PathVariable id: String): EntityModel<TaskView> {
-        val task = queryGateway.query(FindTaskById(taskId= id), ResponseTypes.instanceOf(TaskView::class.java)).get()
+        val task = queryGateway.query(FindTaskById(taskId = id), ResponseTypes.instanceOf(TaskView::class.java)).get()
         return EntityModel.of(task)
             .add(linkTo(methodOn(TaskQueryController::class.java).getTaskById(id)).withSelfRel().toMono().awaitSingle())
+    }
+
+
+    @GetMapping("/tasks/search", produces = [MediaTypes.HAL_JSON_VALUE])
+    suspend fun getAllTaskByState(@RequestParam taskState: TaskState): CollectionModel<EntityModel<TaskView>> {
+        val tasks = queryGateway.query(FindAllTaskWithState(taskState = taskState), ResponseTypes.multipleInstancesOf(TaskView::class.java)).get()
+        return CollectionModel.wrap(tasks.asIterable())
+            .add(linkTo(methodOn(IndexRootController::class.java).index()).withRel(IanaLinkRelations.PREV).toMono().awaitSingle())
+            .add(linkTo(methodOn(TaskQueryController::class.java).getAllTaskByState(taskState)).withSelfRel().toMono().awaitSingle())
+
     }
 }
 

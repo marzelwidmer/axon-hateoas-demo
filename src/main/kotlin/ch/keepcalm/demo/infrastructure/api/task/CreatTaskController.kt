@@ -2,6 +2,7 @@ package ch.keepcalm.demo.infrastructure.api.task
 
 import ch.keepcalm.demo.application.CreateTaskCommand
 import ch.keepcalm.demo.domain.TaskId
+import com.fasterxml.jackson.annotation.JsonFormat
 import kotlinx.coroutines.reactive.awaitSingle
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.axonframework.extensions.reactor.commandhandling.gateway.ReactorCommandGateway
@@ -14,6 +15,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
@@ -47,3 +49,8 @@ class CreatTaskController(private val commandGateway: ReactorCommandGateway) {
     }
 }
 
+
+data class CreateTaskResource(
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    val createdDate: LocalDate
+)

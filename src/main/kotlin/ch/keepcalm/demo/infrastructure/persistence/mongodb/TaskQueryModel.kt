@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
 @Document
-data class TaskView(@Indexed @Id val taskId: String, val state: TaskState, val date: LocalDateTime)
+data class TaskView(@Indexed @Id val taskId: String, val taskState: TaskState, val date: LocalDateTime)
 
