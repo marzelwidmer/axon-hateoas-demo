@@ -2,6 +2,7 @@ package ch.keepcalm.demo.infrastructure.api.task
 
 import ch.keepcalm.demo.domain.TaskState
 import ch.keepcalm.demo.infrastructure.api.IndexRootController
+import ch.keepcalm.demo.infrastructure.api.REL.API_SEARCH_REL
 import ch.keepcalm.demo.infrastructure.persistence.FindAllTaskWithState
 import ch.keepcalm.demo.infrastructure.persistence.FindAllTasks
 import ch.keepcalm.demo.infrastructure.persistence.FindTaskById
@@ -40,7 +41,7 @@ class TaskQueryController(private val queryGateway: QueryGateway) {
         }
         return EntityModel.of(task)
             .add(linkTo(methodOn(TaskQueryController::class.java).getTaskById(id)).withSelfRel().toMono().awaitSingle())
-            .add(linkTo(methodOn(TaskQueryController::class.java).search(taskState = null)).withRel("search").toMono().awaitSingle())
+            .add(linkTo(methodOn(TaskQueryController::class.java).search(taskState = null)).withRel(API_SEARCH_REL).toMono().awaitSingle())
     }
 
 

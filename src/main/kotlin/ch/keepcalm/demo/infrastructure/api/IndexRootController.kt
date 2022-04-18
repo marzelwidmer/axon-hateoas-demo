@@ -1,6 +1,10 @@
 package ch.keepcalm.demo.infrastructure.api
 
 import ch.keepcalm.demo.domain.TaskState
+import ch.keepcalm.demo.infrastructure.api.REL.API_CREATE_NEW_TASK_REL
+import ch.keepcalm.demo.infrastructure.api.REL.API_DOCS_REL
+import ch.keepcalm.demo.infrastructure.api.REL.API_GET_ALL_TASKS_REL
+import ch.keepcalm.demo.infrastructure.api.REL.API_SEARCH_REL
 import ch.keepcalm.demo.infrastructure.api.task.CreatTaskController
 import ch.keepcalm.demo.infrastructure.api.task.CreateTaskResource
 import ch.keepcalm.demo.infrastructure.api.task.TaskQueryController
@@ -18,13 +22,6 @@ import java.time.LocalDateTime
 @InfrastructureRing
 @RestController
 class IndexRootController {
-
-    companion object REL {
-        const val API_DOCS_REL = "documentation"
-        const val API_GET_ALL_TASKS_REL = "get-all-tasks"
-        const val API_CREATE_NEW_TASK_REL = "create-new-task"
-        const val API_SEARCH_REL = "search"
-    }
 
     @GetMapping("/", produces = [MediaTypes.HAL_JSON_VALUE])
     suspend fun index(): EntityModel<Unit> {
