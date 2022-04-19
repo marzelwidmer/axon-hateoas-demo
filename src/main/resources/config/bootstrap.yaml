@@ -13,7 +13,7 @@ spring:
 spring:
   config:
     activate:
-      on-profile: standalone
+      on-profile: standalone,docker
 
   cloud:
     kubernetes:

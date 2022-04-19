@@ -32,7 +32,7 @@ fun main(args: Array<String>) {
     runApplication<KbootTasksApplicationService>(*args) {
         addInitializers(
             beans {
-                profile("standalone") {
+                profile("docker") {
                     bean {
                         val commandGateway = ref<ReactorCommandGateway>()
                         ApplicationRunner {
