@@ -16,8 +16,8 @@ resources:
 # ConfigMap
 patchesStrategicMerge:
   - use-rediness-probe.yaml
-#  - use-secrets.yaml
-#  - use-mongodb-secrets.yaml
+  - use-secrets.yaml
+  - use-mongodb-secrets.yaml
 #  - use-actuator-secrets.yaml
 #  - use-java-tool-options.yaml
 

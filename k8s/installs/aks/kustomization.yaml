@@ -20,6 +20,7 @@ resources:
 # Patch Deployment
 patchesStrategicMerge:
   - patch-spring-profile.yaml
+  - patch-limits.yaml
 
 # ConfigMap
 configMapGenerator:
