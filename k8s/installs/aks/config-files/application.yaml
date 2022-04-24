@@ -2,7 +2,7 @@ spring:
   # MongoDB
   data:
     mongodb:
-      uri: mongodb://root:${MONGODB_PASSWORD}@mongodb-0.mongodb-headless.myhelsana.svc.cluster.local,mongodb-1.mongodb-headless.myhelsana.svc.cluster.local
+      uri: mongodb://root:${MONGODB_PASSWORD}@mongodb-0.mongodb-headless.demo.svc.cluster.local,mongodb-1.mongodb-headless.demo.svc.cluster.local
   redis:
     host: redis-master
     port: 6379

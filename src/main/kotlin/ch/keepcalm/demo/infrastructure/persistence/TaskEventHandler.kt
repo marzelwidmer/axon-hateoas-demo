@@ -13,6 +13,7 @@ import java.util.*
 @Component
 class TaskEventHandler(private val taskViewRepository: TaskViewRepository) {
 
+    // effect
     @EventHandler
     fun on(event: TaskCreatedEvent) {
         taskViewRepository.save(TaskView(event.taskId.value, taskState = event.state, date = event.date))

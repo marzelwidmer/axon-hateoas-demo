@@ -19,6 +19,7 @@ class TaskAggregate {
 
     constructor() {}
 
+    // Action
     @CommandHandler
     constructor(command: CreateTaskCommand) {
         if (!this::taskId.isInitialized) {
@@ -26,6 +27,7 @@ class TaskAggregate {
     	}
     }
 
+    // effect
     @EventSourcingHandler
     fun on(event: TaskCreatedEvent){
         taskId = event.taskId
