@@ -9,4 +9,4 @@ spec:
         - name: kboot-tasks
           env:
             - name: SPRING_PROFILES_ACTIVE
-upg              value: default
+              value: default
