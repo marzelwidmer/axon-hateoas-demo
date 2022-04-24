@@ -63,6 +63,7 @@ class IndexRootControllerTest(private var webTestClient: WebTestClient) {
                         linkWithRel("documentation").description("The <<resources_documentation,API Documentation>> resource"),
                         linkWithRel("get-all-tasks").description("The <<resources_get-all-tasks,API Get All Tasks Resource>> resource"),
                         linkWithRel("create-new-task").description("The <<resources_create-new-task,API Create New Task Resource>> resource"),
+                        linkWithRel("search").description("The <<resources_search,API Search Task Resource>> resource"),
                     ), responseFields(
                         subsectionWithPath("_links").description("Links to other resources")
                     )
